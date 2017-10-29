@@ -1,0 +1,48 @@
+﻿@model IEnumerable<s2Games.Models.amigo>
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div style="float:right">
+            <button type="button" class="btn btn-info" id="btnIncluir">
+                <span class="glyphicon glyphicon-new-window"></span>&nbsp;Incluir
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Lista de Amigos
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" class="col-game">Nome</th>
+                <th scope="col" class="col-acao">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var game in Model)
+            {
+                <tr>
+                    <td>@game.nome</td>
+                    <td>
+                        <button type="button" id="btnAlterar" class="btn btn-info" data-id='{"codigo":@game.codigo,"nome":"@game.nome"}'>
+                            <span class="glyphicon glyphicon-edit"></span>&nbsp;Alterar
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn btn-info" onclick="excluir(@game.codigo)">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;Excluir
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+ 
+</div>

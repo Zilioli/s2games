@@ -1,0 +1,42 @@
+﻿@model IEnumerable<s2Games.Models.emprestimo>
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div style="float:right">
+            <button type="button" class="btn btn-info" id="btnIncluir">
+                <span class="glyphicon glyphicon-new-window"></span>&nbsp;Emprestar
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+<div class="div-main">
+    <div class="panel panel-default">
+        <div class="panel-heading">Painel de Controle - Jogos Emprestados</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-nome">Game</th>
+                    <th scope="col" class="col-nome">Amigo</th>
+                    <th scope="col" class="col-acao">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emprestimo in Model)
+                {
+                    <tr>
+                        <td>@emprestimo.game.nome</td>
+                        <td>@emprestimo.amigo.nome</td>
+                        <td>
+                            <button type="button" class="btn btn-info" onclick="devolver(@emprestimo.codigoAmigo, @emprestimo.codigoGame)">
+                                <span class="glyphicon glyphicon-log-in"></span> Devolver
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
